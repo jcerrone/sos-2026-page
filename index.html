@@ -116,6 +116,137 @@
         height: 480px;
       }
     }
+
+.state-explorer {
+  background: var(--soft-blue-bg);
+  padding: 84px 6vw;
+}
+
+.explorer-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 34px;
+}
+
+.explorer-title {
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--slate);
+  margin: 0 0 14px;
+}
+
+.explorer-subhead {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  color: var(--muted);
+  margin: 0;
+}
+
+.state-select-wrap {
+  max-width: 560px;
+  margin: 0 auto 38px;
+}
+
+.state-select {
+  width: 100%;
+  font: inherit;
+  font-size: 1.2rem;
+  padding: 16px 18px;
+  border: 2px solid var(--light-blue);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--slate);
+}
+
+.state-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(47, 75, 97, 0.14);
+  border: 1px solid var(--light-gray-blue);
+}
+
+.state-status {
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--gold);
+}
+
+.state-status.not-running {
+  background: var(--map-neutral);
+  color: var(--slate);
+}
+
+.state-card-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 34px;
+  padding: 42px;
+  align-items: center;
+}
+
+.state-graphic {
+  min-height: 250px;
+  border-radius: 24px;
+  background: var(--light-gray-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate);
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+
+.state-name {
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  color: var(--slate);
+  margin: 0 0 26px;
+}
+
+.state-fields {
+  display: grid;
+  gap: 20px;
+}
+
+.state-field-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 4px;
+}
+
+.state-field-value {
+  font-size: 1.12rem;
+  color: var(--text);
+}
+
+@media (max-width: 800px) {
+  .state-card-body {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .state-graphic {
+    min-height: 180px;
+    font-size: 4rem;
+  }
+}
   </style>
 </head>
 
@@ -147,6 +278,132 @@
       </div>
     </section>
 
+    <section class="state-explorer">
+  <div class="inner">
+
+    <div class="explorer-header">
+      <h2 class="explorer-title">Is your Secretary of State running for office?</h2>
+      <p class="explorer-subhead">
+        Select a state to see who oversees elections, whether they are running in 2026,
+        and what conflict-of-interest guardrails are publicly available.
+      </p>
+    </div>
+
+    <div class="state-select-wrap">
+      <select id="stateSelect" class="state-select">
+        <option value="MI">Michigan</option>
+        <option value="UT">Utah</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="AZ">Arizona</option>
+        <option value="GA">Georgia</option>
+      </select>
+    </div>
+
+    <div class="state-card">
+      <div id="stateStatus" class="state-status">Running in 2026</div>
+
+      <div class="state-card-body">
+        <div id="stateGraphic" class="state-graphic">MI</div>
+
+        <div>
+          <h3 id="stateName" class="state-name">Michigan</h3>
+
+          <div class="state-fields">
+            <div>
+              <div class="state-field-label">Officer</div>
+              <div id="stateOfficer" class="state-field-value"></div>
+            </div>
+
+            <div>
+              <div class="state-field-label">Details</div>
+              <div id="stateDetails" class="state-field-value"></div>
+            </div>
+
+            <div>
+              <div class="state-field-label">COI Guardrails</div>
+              <div id="stateGuardrails" class="state-field-value"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+    
   </main>
+
+  <script>
+  const stateData = {
+    MI: {
+      name: "Michigan",
+      status: "running",
+      officer: "Jocelyn Benson, Secretary of State",
+      details: "Benson is running for governor in 2026. She was first elected secretary of state in 2018 and re-elected in 2022.",
+      guardrails: "Michigan has released a public conflict-of-interest plan describing how election-related responsibilities will be handled during the campaign."
+    },
+    UT: {
+      name: "Utah",
+      status: "not-running",
+      officer: "Deidre Henderson, Lieutenant Governor",
+      details: "Utah’s lieutenant governor serves as the state’s chief election officer.",
+      guardrails: "Utah enacted a requirement for election officials who are candidates to prepare conflict-of-interest avoidance plans."
+    },
+    PA: {
+      name: "Pennsylvania",
+      status: "not-running",
+      officer: "Al Schmidt, Secretary of the Commonwealth",
+      details: "Placeholder details for Pennsylvania.",
+      guardrails: "Placeholder conflict-of-interest guardrails."
+    },
+    AZ: {
+      name: "Arizona",
+      status: "running",
+      officer: "Placeholder officer",
+      details: "Placeholder details for Arizona.",
+      guardrails: "Placeholder conflict-of-interest guardrails."
+    },
+    GA: {
+      name: "Georgia",
+      status: "running",
+      officer: "Placeholder officer",
+      details: "Placeholder details for Georgia.",
+      guardrails: "Placeholder conflict-of-interest guardrails."
+    }
+  };
+
+  const stateSelect = document.getElementById("stateSelect");
+  const stateStatus = document.getElementById("stateStatus");
+  const stateGraphic = document.getElementById("stateGraphic");
+  const stateName = document.getElementById("stateName");
+  const stateOfficer = document.getElementById("stateOfficer");
+  const stateDetails = document.getElementById("stateDetails");
+  const stateGuardrails = document.getElementById("stateGuardrails");
+
+  function updateStateCard(stateCode) {
+    const data = stateData[stateCode];
+
+    stateGraphic.textContent = stateCode;
+    stateName.textContent = data.name;
+    stateOfficer.textContent = data.officer;
+    stateDetails.textContent = data.details;
+    stateGuardrails.textContent = data.guardrails;
+
+    if (data.status === "running") {
+      stateStatus.textContent = "Running in 2026";
+      stateStatus.classList.remove("not-running");
+    } else {
+      stateStatus.textContent = "Not running in 2026";
+      stateStatus.classList.add("not-running");
+    }
+  }
+
+  stateSelect.addEventListener("change", function () {
+    updateStateCard(this.value);
+  });
+
+  updateStateCard(stateSelect.value);
+</script>
+  
 </body>
 </html>
