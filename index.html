@@ -291,11 +291,6 @@
 
     <div class="state-select-wrap">
       <select id="stateSelect" class="state-select">
-        <option value="AZ">Arizona</option>
-        <option value="GA">Georgia</option>
-        <option value="MI">Michigan</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="UT">Utah</option>
       </select>
     </div>
 
@@ -401,7 +396,16 @@
   stateSelect.addEventListener("change", function () {
     updateStateCard(this.value);
   });
-
+    
+Object.entries(stateData)
+  .sort((a, b) => a[1].name.localeCompare(b[1].name))
+  .forEach(([code, data]) => {
+    const option = document.createElement("option");
+    option.value = code;
+    option.textContent = data.name;
+    stateSelect.appendChild(option);
+  });
+    
   updateStateCard(stateSelect.value);
 </script>
   
