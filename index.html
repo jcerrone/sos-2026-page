@@ -327,13 +327,12 @@
 </section>
     
   </main>
-
-  <script>
+<script>
   const stateData = {
     AZ: {
       name: "Arizona",
       status: "running",
-      chief: "Placeholder officer",
+      officer: "Placeholder officer",
       details: "Placeholder details for Arizona.",
       guardrails: "Placeholder conflict-of-interest guardrails."
     },
@@ -343,7 +342,7 @@
       officer: "Placeholder officer",
       details: "Placeholder details for Georgia.",
       guardrails: "Placeholder conflict-of-interest guardrails."
-    }
+    },
     MI: {
       name: "Michigan",
       status: "running",
@@ -378,6 +377,8 @@
   function updateStateCard(stateCode) {
     const data = stateData[stateCode];
 
+    if (!data) return;
+
     stateGraphic.textContent = stateCode;
     stateName.textContent = data.name;
     stateOfficer.textContent = data.officer;
@@ -393,21 +394,21 @@
     }
   }
 
+  Object.entries(stateData)
+    .sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .forEach(([code, data]) => {
+      const option = document.createElement("option");
+      option.value = code;
+      option.textContent = data.name;
+      stateSelect.appendChild(option);
+    });
+
   stateSelect.addEventListener("change", function () {
     updateStateCard(this.value);
   });
-    
-Object.entries(stateData)
-  .sort((a, b) => a[1].name.localeCompare(b[1].name))
-  .forEach(([code, data]) => {
-    const option = document.createElement("option");
-    option.value = code;
-    option.textContent = data.name;
-    stateSelect.appendChild(option);
-  });
-    
+
   updateStateCard(stateSelect.value);
 </script>
-  
+   
 </body>
 </html>
