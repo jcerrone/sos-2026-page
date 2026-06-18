@@ -291,11 +291,11 @@
 
     <div class="state-select-wrap">
       <select id="stateSelect" class="state-select">
-        <option value="MI">Michigan</option>
-        <option value="UT">Utah</option>
-        <option value="PA">Pennsylvania</option>
         <option value="AZ">Arizona</option>
         <option value="GA">Georgia</option>
+        <option value="MI">Michigan</option>
+        <option value="PA">Pennsylvania</option>
+        <option value="UT">Utah</option>
       </select>
     </div>
 
@@ -310,7 +310,7 @@
 
           <div class="state-fields">
             <div>
-              <div class="state-field-label">Officer</div>
+              <div class="state-field-label">Chief Election Officer</div>
               <div id="stateOfficer" class="state-field-value"></div>
             </div>
 
@@ -320,7 +320,7 @@
             </div>
 
             <div>
-              <div class="state-field-label">COI Guardrails</div>
+              <div class="state-field-label">Conflict-of-Interest Guardrails</div>
               <div id="stateGuardrails" class="state-field-value"></div>
             </div>
           </div>
@@ -335,31 +335,10 @@
 
   <script>
   const stateData = {
-    MI: {
-      name: "Michigan",
-      status: "running",
-      officer: "Jocelyn Benson, Secretary of State",
-      details: "Benson is running for governor in 2026. She was first elected secretary of state in 2018 and re-elected in 2022.",
-      guardrails: "Michigan has released a public conflict-of-interest plan describing how election-related responsibilities will be handled during the campaign."
-    },
-    UT: {
-      name: "Utah",
-      status: "not-running",
-      officer: "Deidre Henderson, Lieutenant Governor",
-      details: "Utah’s lieutenant governor serves as the state’s chief election officer.",
-      guardrails: "Utah enacted a requirement for election officials who are candidates to prepare conflict-of-interest avoidance plans."
-    },
-    PA: {
-      name: "Pennsylvania",
-      status: "not-running",
-      officer: "Al Schmidt, Secretary of the Commonwealth",
-      details: "Placeholder details for Pennsylvania.",
-      guardrails: "Placeholder conflict-of-interest guardrails."
-    },
     AZ: {
       name: "Arizona",
       status: "running",
-      officer: "Placeholder officer",
+      chief: "Placeholder officer",
       details: "Placeholder details for Arizona.",
       guardrails: "Placeholder conflict-of-interest guardrails."
     },
@@ -369,6 +348,27 @@
       officer: "Placeholder officer",
       details: "Placeholder details for Georgia.",
       guardrails: "Placeholder conflict-of-interest guardrails."
+    }
+    MI: {
+      name: "Michigan",
+      status: "running",
+      officer: "Jocelyn Benson, Secretary of State",
+      details: "Benson is running for governor in 2026. She was first elected secretary of state in 2018 and re-elected in 2022.",
+      guardrails: "Michigan has released a public conflict-of-interest plan describing how election-related responsibilities will be handled during the campaign."
+    },
+    PA: {
+      name: "Pennsylvania",
+      status: "not-running",
+      officer: "Al Schmidt, Secretary of the Commonwealth",
+      details: "Placeholder details for Pennsylvania.",
+      guardrails: "Placeholder conflict-of-interest guardrails."
+    },
+    UT: {
+      name: "Utah",
+      status: "not-running",
+      officer: "Deidre Henderson, Lieutenant Governor",
+      details: "Utah’s lieutenant governor serves as the state’s chief election officer.",
+      guardrails: "Utah enacted a requirement for election officials who are candidates to prepare conflict-of-interest avoidance plans."
     }
   };
 
