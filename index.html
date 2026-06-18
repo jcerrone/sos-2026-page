@@ -61,13 +61,15 @@
       background: var(--page);
       color: var(--text);
       text-align: center;
+      padding-top: 72px;
+      padding-bottom: 32px;
     }
 
     .hero-title {
       font-family: "Public Sans", system-ui, sans-serif;
-      font-size: clamp(2.2rem, 4.3vw, 4.35rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
+      font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
       font-weight: 600;
       margin: 0 auto 16px;
       max-width: 1180px;
@@ -76,8 +78,8 @@
     }
 
     .hero-subhead {
-      font-size: clamp(1.1rem, 1.65vw, 1.35rem);
-      max-width: 860px;
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      max-width: 950px;
       color: var(--muted);
       margin: 0 auto;
       text-transform: none;
@@ -86,6 +88,11 @@
     .hero-map {
       margin-top: 42px;
       width: 100%;
+    }
+
+    .stat-highlight {
+      background: linear-gradient(transparent 55%, rgba(198,162,90,.45) 55%);
+      font-weight: 700;
     }
 
     .flourish-embed-iframe {
@@ -122,7 +129,7 @@
         </h1>
 
         <p class="hero-subhead">
-          In 2026, <strong>26 secretaries of state</strong> are running for office while overseeing elections.<br>
+          In 2026, <span class="stat-highlight">26 Secretaries of State</span> are running for office while overseeing elections.<br>
           Explore where this is happening — and why it matters.
         </p>
 
