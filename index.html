@@ -1,23 +1,144 @@
-<div style="width:100vw;margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); background:#ffffff; font-family:'Public Sans','Source Sans 3','Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:#172033; line-height:1.55; text-transform:none !important;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- HERO -->
-  <section style="background:#ffffff; color:#172033; padding:58px 6vw 46px;">
-    <div style="max-width:1280px; margin:0 auto; text-align:center">
+  <title>When the Referee Is Also a Player</title>
 
-      <h1 style="font-family:'Public Sans','Inter',system-ui,sans-serif; font-size:clamp(2.2rem,4.3vw,4.35rem); line-height:1.04; letter-spacing:-0.03em; font-weight:600; text-transform:none !important; margin:0 0 16px; max-width:1180px; color:#2f4b61;">
-        When the Referee Is Also a Player
-      </h1>
+  <!-- Optional Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-      <p style="font-family:'Source Sans 3','Inter',system-ui,sans-serif; font-size:clamp(1.1rem,1.65vw,1.35rem); max-width:860px; color:#4d5b70; margin:0 auto; text-transform:none !important;">
-        In 2026, <b>26 secretaries of state</b> are running for office while overseeing elections.
-        <br>Explore where this is happening — and why it matters.
-      </p>
+  <style>
+    :root {
+      --slate: #2f4b61;
+      --deep-slate: #203647;
+      --light-blue: #b2cde3;
+      --light-gray-blue: #eaeef1;
+      --map-neutral: #d7dee4;
+      --brick: #882110;
+      --gold: #c6a25a;
+      --sage: #6e8b74;
+      --page: #ffffff;
+      --text: #172033;
+      --muted: #4d5b70;
+      --soft-blue-bg: #f5f9fc;
+    }
 
- <div style="margin-top:42px;">
+    * {
+      box-sizing: border-box;
+    }
 
-<iframe src="https://flo.uri.sh/visualisation/29426086/embed" title="Interactive or visual content" class="flourish-embed-iframe" frameborder="0" scrolling="no" style="width:100%;height:600px;" sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe>
-</div>
+    html {
+      scroll-behavior: smooth;
+    }
 
-  </div></section>
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
 
-</div>
+    .page {
+      width: 100%;
+      background: var(--page);
+    }
+
+    .section {
+      padding: 58px 6vw 46px;
+    }
+
+    .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: var(--page);
+      color: var(--text);
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: "Public Sans", system-ui, sans-serif;
+      font-size: clamp(2.2rem, 4.3vw, 4.35rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      margin: 0 auto 16px;
+      max-width: 1180px;
+      color: var(--slate);
+      text-transform: none;
+    }
+
+    .hero-subhead {
+      font-size: clamp(1.1rem, 1.65vw, 1.35rem);
+      max-width: 860px;
+      color: var(--muted);
+      margin: 0 auto;
+      text-transform: none;
+    }
+
+    .hero-map {
+      margin-top: 42px;
+      width: 100%;
+    }
+
+    .flourish-embed-iframe {
+      width: 100%;
+      height: 600px;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 700px) {
+      .section {
+        padding: 42px 5vw 34px;
+      }
+
+      .hero-map {
+        margin-top: 32px;
+      }
+
+      .flourish-embed-iframe {
+        height: 480px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="section hero">
+      <div class="inner">
+
+        <h1 class="hero-title">
+          When the Referee Is Also a Player
+        </h1>
+
+        <p class="hero-subhead">
+          In 2026, <strong>26 secretaries of state</strong> are running for office while overseeing elections.<br>
+          Explore where this is happening — and why it matters.
+        </p>
+
+        <div class="hero-map">
+          <iframe
+            src="https://flo.uri.sh/visualisation/29426086/embed"
+            title="Interactive map showing secretaries of state running for office in 2026"
+            class="flourish-embed-iframe"
+            scrolling="no"
+            sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation">
+          </iframe>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
