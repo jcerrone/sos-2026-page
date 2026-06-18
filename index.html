@@ -394,6 +394,13 @@
     }
   }
 
+const placeholder = document.createElement("option");
+placeholder.value = "";
+placeholder.textContent = "Select a state...";
+placeholder.selected = true;
+placeholder.disabled = true;
+stateSelect.appendChild(placeholder);
+  
   Object.entries(stateData)
     .sort((a, b) => a[1].name.localeCompare(b[1].name))
     .forEach(([code, data]) => {
